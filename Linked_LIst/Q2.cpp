@@ -7,8 +7,9 @@
 
 #include <iostream>
 using namespace std;
+
 class node{
-    public:
+public:
     int data;
     node* next;
 };
@@ -20,8 +21,9 @@ void insert(int e){
     node* temp = new node;
     temp->data = e;
     temp->next = nullptr;
-    if(head == nullptr){head = temp; last = temp;}
-    else{
+    if(head == nullptr){
+        head = last = temp;
+    } else {
         last->next = temp;
         last = temp;
     }
@@ -29,43 +31,55 @@ void insert(int e){
 
 void display(){
     node* temp = head;
-    while(temp != NULL){
-        cout<<temp->data<<" ";
+    if (!temp) { cout << "(empty)"; return; }
+    while(temp != nullptr){
+        cout << temp->data;
+        if (temp->next) cout << " ";
         temp = temp->next;
     }
 }
 
-    node* temp = head;
-    if(N == head){
-        head = N->next;
-        delete(N);
-        return;
+int delete_all_occurrences(int key){
+    int count = 0;
+    while (head && head->data == key){
+        node* t = head;
+        head = head->next;
+        delete t;
+        ++count;
     }
-    while(temp->data != ){
 
+    if (!head){
+        last = nullptr;
+        return count;
     }
-}
-
-void delete_dup(int key){
-    node* temp = head;
-    while(temp != NULL){
-        if(temp->data == key && temp == head){
-            head = head->next;
-            last = last->next;
-            delete(temp);
-        }else{
-            last->next = temp->next;
-            last = temp;
-            temp = temp->next;
+    node* prev = head;
+    node* cur  = head->next;
+    while (cur){
+        if (cur->data == key){
+            node* t = cur;
+            prev->next = cur->next;
+            if (cur == last) last = prev; 
+            cur = prev->next;
+            delete t;
+            count++;
+        } else {
+            prev = cur;
+            cur = cur->next;
         }
-    }
+    }return count;
 }
-
-
 int main(){
-insert(10);
-insert(11);
-insert(12);
-insert(13);
-display();
+    int arr[] = {1,2,1,2,1,3,1};
+    for (int x : arr) insert(x);
+    int key = 1;
+    int cnt = delete_all_occurrences(key);
+    cout << "Count: " << cnt << " ,  Updated Linked List: ";
+    display();
+    cout << "\n";
+    while (head){
+        node* t = head;
+        head = head->next;
+        delete t;
+    }
+    last = nullptr;
 }
