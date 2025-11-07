@@ -1,8 +1,7 @@
-// 2. Write a program to count the number of occurrences of a given key 
-// in a singly linked list and then delete all the occurrences. 
-// Input: Linked List : 1->2->1->2->1->3->1 ,
-//  key: 1 Output: Count: 4 ,
-//  Updated Linked List: 2->2->3.
+// 3. Write a program to find the middle of a linked list. 
+// Input: 1->2->3->4->5 
+// Output: 3
+
 
 
 #include <iostream>
@@ -12,26 +11,20 @@ class node{
     int data;
     node* next;
 };
-
 node* head=nullptr;
 node* last=nullptr;
-
 void insert(int x){
     node* t=new node;
     t->data=x;
     t->next=nullptr;
-    if(head==nullptr){
-        head=t;last=t;
-    }
-    else{
-        last->next=t;last=t;
-    }
+    if(head==nullptr){head=t;last=t;}
+    else{last->next=t;last=t;}
 }
 void display(){
     node* p=head;
     while(p!=nullptr){
         cout<<p->data;
-        if(p->next) cout<<" ";
+        if(p->next) cout<<"->";
         p=p->next;
     }
     cout<<endl;
@@ -61,6 +54,6 @@ int main(){
             p=p->next;
         }
     }
-    cout<<"Count: "<<c<<" , updated linked list is : ";
+    cout<<"Count: "<<c<<" , Updated Linked List: ";
     display();
 }

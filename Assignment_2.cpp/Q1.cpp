@@ -45,15 +45,14 @@ void binary_search(int a[], int n, int value)
     }
 
     if (!found)
-        cout << "Element not found" << endl;
+        cout << "element not found" << endl;
 }
 int main()
 {
     int n = 5;
     int val;
-    cout << "Enter the value to search: ";
+    cout << "enter the value to search: ";
     cin >> val;
     int arr[n] = {5, 3, 2, 4, 1};
-
     binary_search(arr, n, val);
 }
