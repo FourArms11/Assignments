@@ -5,7 +5,7 @@
 // (b) Using binary search.
 
 
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 int miss_num_linear(int a[], int m, int n){
