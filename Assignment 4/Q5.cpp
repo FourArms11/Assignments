@@ -36,6 +36,11 @@ public:
 class StackOneQueue {
     queue<int> q;
 public:
+// Insert x into the queue
+// Rotate the queue (size-1) times:
+// Remove front
+// Put it back (push at rear)
+// This shifts the new element (which is at the back) all the way to the front.
     void push(int x) {
         q.push(x);
         int sz = q.size();
