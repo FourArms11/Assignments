@@ -9,6 +9,11 @@ class StackTwoQueues {
     queue<int> q1;
     queue<int> q2;
 public:
+
+// Enqueue x into q2
+// Move ALL elements from q1 → q2
+// Swap q1 and q2
+// Now the new element is at the front of q1, simulating stack top.
     void push(int x) {
         q2.push(x);
         while (!q1.empty()) {

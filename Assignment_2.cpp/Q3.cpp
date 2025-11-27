@@ -29,7 +29,6 @@ int miss_num_bin(int a[], int m){
         else
             h = mid - 1;
     }
-    
     return start + l;
 }
 
