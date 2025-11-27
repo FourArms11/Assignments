@@ -167,49 +167,47 @@ int main() {
 }
 
 // Quick Sort
-
 #include <iostream>
 using namespace std;
 
-int partitionArr(int a[], int low, int high) {
-    int pivot = a[high];
-    int i = low - 1;
+void swap(int *a,int *b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
 
-    for (int j = low; j < high; j++) {
-        if (a[j] < pivot) {
-            i++;
-            swap(a[i], a[j]);
+int partition(int A[],int l , int h){
+    int pivot = A[l];
+    int i = l, j = h;
+    do {
+        do { i++; } while(A[i] <= pivot);
+        do { j--; } while(A[j] > pivot);
+        if(i < j){
+            swap(&A[i], &A[j]);
         }
-    }
-    swap(a[i + 1], a[high]);
-    return i + 1;
+    } while(i < j);
+    swap(&A[l], &A[j]);
+    return j;
 }
 
-void quickSort(int a[], int low, int high) {
-    if (low < high) {
-        int p = partitionArr(a, low, high);
-        quickSort(a, low, p - 1);
-        quickSort(a, p + 1, high);
+void quick_sort(int A[], int l , int h){
+    int j;
+    if(l < h){
+        j = partition(A, l, h);
+        quick_sort(A, l, j);
+        quick_sort(A, j+1, h);
     }
 }
 
-void display(int a[], int n) {
-    for (int i = 0; i < n; i++)
-        cout << a[i] << " ";
+int main(){
+    int A[] = {11,13,7,12,16,9,24,5,10,3,INT32_MAX};
+    int n = 11; // includes sentinel
+    
+    quick_sort(A, 0, n-1);
+
+    for(int i = 0; i < n-1; i++){ // exclude sentinel
+        cout << " " << A[i] << " ";
+    }
     cout << endl;
-}
-
-int main() {
-    int a[] = {50, 23, 9, 18, 61, 32};
-    int n = sizeof(a) / sizeof(int);
-
-    cout << "prev array: ";
-    display(a, n);
-
-    quickSort(a, 0, n - 1);
-
-    cout << "after sort array: ";
-    display(a, n);
-
     return 0;
 }

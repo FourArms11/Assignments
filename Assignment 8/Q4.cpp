@@ -9,6 +9,7 @@ struct Node {
     int data;
     Node* left;
     Node* right;
+
     Node(int v) : data(v), left(nullptr), right(nullptr) {}
 };
 
@@ -63,7 +64,7 @@ int main() {
     root2->left = new Node(30);
     root2->right = new Node(70);
     root2->left->left = new Node(20);
-    root2->left->right = new Node(60); // violates BST property
+    root2->left->right = new Node(60); 
     root2->right->left = new Node(55);
     root2->right->right = new Node(80);
 
