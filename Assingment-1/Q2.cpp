@@ -17,7 +17,7 @@ int main()
                 {
                     arr[k] = arr[k + 1];
                 }
-                n--; //decrease the size of array
+                n--; 
             }
         }
     }

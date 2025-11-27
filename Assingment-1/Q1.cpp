@@ -87,6 +87,7 @@ int main()
     bool flag = true;
     cout << "enter the number of elements" << endl;
     cin >> size;
+    
     int arr[size];
     while (flag == true)
     {
