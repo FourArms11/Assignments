@@ -28,7 +28,7 @@ int main() {
 
     // sample input
     int a[] = {4, 7, 11, 20, 5, 9};
-    int n = sizeof(a) / sizeof(a[0]);
+    int n = sizeof(a) / sizeof(int);
 
     for (int i = 0; i < n; i++)
         q.push(a[i]);

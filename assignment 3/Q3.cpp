@@ -3,7 +3,7 @@
 
 
 #include <iostream>
-#include <cstring> // for strlen()
+#include <cstring> 
 using namespace std;
 
 #define MAX 100

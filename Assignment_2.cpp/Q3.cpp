@@ -8,28 +8,36 @@
 #include <iostream>
 using namespace std;
 
-int miss_num_linear(int a[], int m, int n){
-    for(int i=0;i<m;i++){
-        if(a[i]!=i+1) 
-            return i+1;
+int miss_num_linear(int a[], int m){
+    int start = a[0];
+    for(int i = 0; i < m; i++){
+        if(a[i] != start + i)
+            return start + i;
     }
-    return n;
+    return a[0] + m;
 }
 
-int miss_num_bin(int a[], int m, int n){
-    int l=0,r=m-1;
-    while(l<=r){
-        int mid=(l+r)/2;
-        if(a[mid]==mid+1) l=mid+1;
-        else r=mid-1;
+
+int miss_num_bin(int a[], int m){
+    int l=0, h=m-1;
+    int start = a[0];  
+
+    while(l<=h){
+        int mid=(l+h)/2;
+        if(a[mid] == start + mid)
+            l = mid + 1;
+        else
+            h = mid - 1;
     }
-    return l+1;
+    
+    return start + l;
 }
+
 
 int main(){
-    int a[]={1,2,3,5,6,7};
-    int m=sizeof(a)/sizeof(a[0]);
-    int n=7;
-    cout<<miss_num_linear(a,m,n)<<endl;
-    cout<<miss_num_bin(a,m,n)<<endl;
+    int a[]={12,13,15,16,17,18};
+    int m=sizeof(a)/sizeof(int); //size of array
+    int n=7; // total number of elements
+    cout<<miss_num_linear(a,m)<<endl;
+    cout<<miss_num_bin(a,m)<<endl;
 }

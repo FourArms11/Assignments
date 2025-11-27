@@ -4,38 +4,29 @@
 
 
 
-
 #include <iostream>
 using namespace std;
 
 int main() {
     int n;
-    cout << "Enter number of elements: ";
     cin >> n;
 
-    int arr[100];
-    cout << "Enter " << n << " elements:\n";
-    for (int i = 0; i < n; i++)
-        cin >> arr[i];
+    int a[100];
+    for(int i=0;i<n;i++) cin >> a[i];
 
-    int distinctCount = 0;
+    int d = 0;
 
-    for (int i = 0; i < n; i++) {
-        bool isDistinct = true;
-
-        // Check if arr[i] appeared before
-        for (int j = 0; j < i; j++) {
-            if (arr[i] == arr[j]) {
-                isDistinct = false;
+    for(int i=0;i<n;i++){
+        bool ok = true;
+        for(int j=0;j<i;j++){
+            if(a[i] == a[j]){
+                ok = false;
                 break;
             }
         }
-
-        if (isDistinct)
-            distinctCount++;
+        if(ok) d++;
     }
 
-    cout << "Total number of distinct elements = " << distinctCount << endl;
-
+    cout << d;
     return 0;
 }

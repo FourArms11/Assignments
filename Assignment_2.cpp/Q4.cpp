@@ -89,7 +89,7 @@ int main() {
     cin.ignore();
 
     char str[10][100];
-    cout << "Enter strings:\n";
+    cout << "Enter string:"<<endl;
     for (int i = 0; i < n; i++) {
         cin.getline(str[i], 100);
     }
@@ -134,6 +134,5 @@ int main() {
     } else {
         cout << "Character is not uppercase!" << endl;
     }
-
     return 0;
 }

@@ -52,12 +52,12 @@ int main() {
 
     int len = strlen(str);
 
-    // Push all characters onto the stack
+    // Push
     for (int i = 0; i < len; i++) {
         s.push(str[i]);
     }
 
-    // Pop all characters to get reversed string
+    // Pop to get reversed string
     cout << "Reversed string: ";
     while (!s.isEmpty()) {
         cout << s.pop();
